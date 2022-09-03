@@ -1,0 +1,5 @@
+package com.example.demo.html.repository;
+
+public class PersonaRepositoryImpl implements IPersonaRepository{
+
+}

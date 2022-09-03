@@ -1,0 +1,23 @@
+package com.example.demo.html.controller;
+
+import java.util.List;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.example.demo.html.repository.modelo.Persona;
+
+
+
+@Controller
+@RequestMapping("/personas")
+public class PersonaController {
+	
+	//Get
+	@GetMapping
+	public List<Persona> buscarTodos(){
+		return null;
+		
+	}
+}
