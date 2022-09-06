@@ -49,5 +49,4 @@ public class PersonaRepositoryImpl implements IPersonaRepository{
 	    return myQuery.getResultList();
 
 	}
-
 }

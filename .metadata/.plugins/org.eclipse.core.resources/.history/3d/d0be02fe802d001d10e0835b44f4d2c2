@@ -1,0 +1,53 @@
+package com.example.demo.html.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.example.demo.html.repository.modelo.Persona;
+import com.example.demo.html.service.IPersonaService;
+
+@Controller
+@RequestMapping("/personas")
+public class PersonaController {
+	
+	@Autowired
+	private IPersonaService personaService; 
+	
+	//Get
+	@GetMapping("/buscar")
+	public String buscarTodos(Model model){
+		List<Persona> lista = this.personaService.buscarTodos();
+		model.addAttribute("personas", lista);
+		return "vistaListaPersonas";
+		
+	}
+	@GetMapping("/buscarUno/{idPer}")
+	public String buscarPersona (@PathVariable("idPer") Integer id, Model modelo) {
+		Persona p = this.personaService.buscarPorId(id);
+		modelo.addAttribute("persona",p);
+		return "vistaPersona";
+	}
+	
+	@PutMapping("/actualizar{idPer}")
+	public String actualizarPersona (@PathVariable("idPer") Integer id, Persona persona) {
+		persona.setId(id);
+		this.personaService.actualizarP(persona);
+		return "redirect:/personas/buscar";
+	}
+	
+	@DeleteMapping("/borrar/{idPer}")
+	public String eliminarPersona (@PathVariable("idPer") Persona persona) {
+		this.personaService.actualizarP(persona);
+		return "redirect:/personas/buscar";
+	}
+	
+	
+}

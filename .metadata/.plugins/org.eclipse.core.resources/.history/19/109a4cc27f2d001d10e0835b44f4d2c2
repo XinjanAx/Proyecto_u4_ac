@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar uno...</title>
+</head>
+<body>
+    <form th:action = "@{/persona/actualizar}" th:object = "${persona}">
+        <table>
+            <tr>
+                <td><label>Nombre:</label></td>
+                <td><input type = "text" id="nombre" th:field="${persona.nombre}"></td>
+            </tr>
+            <tr>
+                <td><label>Apellido:</label></td>
+                <td><input type = "text" id="apellido" th:field="${persona.apellido}"></td>
+
+            <tr>
+                <td><label>Cedula:</label></td>
+                <td><input type = "text" id="cedula" th:field="${persona.cedula}"></td>
+
+            </tr>
+            <tr>
+                <td>Genero:</td>
+                <td><input type = "text" id="genero" th:field="${persona.genero}"></td>
+
+            </tr>
+        </table>
+        <input type="sumit" value="Guerdar">
+    </form th:metod="PUT">
+</body>
+</html>
